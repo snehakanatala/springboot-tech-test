@@ -1,6 +1,6 @@
 # Spring PetClinic Sample Application [![Build Status](https://travis-ci.org/spring-projects/spring-petclinic.png?branch=main)](https://travis-ci.org/spring-projects/spring-petclinic/)
 
-PLEASE READ THIS readme.md THOUROGHLY AND ONCE YOU HAVE YOUR LOCAL ENVIRONMENT SETUP, PLEASE OPEN THE 'tasks.md' FILE AND FOLLOW THE STEPS LISTED OUT ON THERE. IF YOU HAVE ANY QUESTIONS THEN PLEASE GET IN TOUCH WITH THE RECRUITER YOU ARE IN CONTACT WITH AND THEY WILL PASS YOUR CONCERNS ON TO THE DEV TEAM WHO LOOK AFTER THIS REPO.
+Please read this 'readme.md' thouroghly and once you have your local environment setup, please open the 'tasks.md' file. Follow the steps listed out on there and if you have any questions then please get in touch with the recruiter you are in contact with and they will pass your concerns on to the dev team who will be able to provide further clarifications.
 
 ## Understanding the Spring Petclinic application with a few diagrams
 <a href="https://speakerdeck.com/michaelisvy/spring-petclinic-sample-application">See the presentation here</a>

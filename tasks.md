@@ -1,6 +1,6 @@
 ### Welcome
 
-This is a Methods Business and Digital LTD Java + Spring boot assessment. This short assessment has been designed to test your skills in Java and springboot. You have 48 hrs to attempt the tasks listed below. Complete as many of the tasks, in order.
+This is a Methods Business and Digital LTD Java + Spring boot assessment. This short assessment has been designed to test your skills in Java and springboot. You have 72 hrs to attempt the tasks listed below. Complete as many of the tasks, in order.
 
 
 ### Tasks

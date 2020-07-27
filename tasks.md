@@ -33,4 +33,13 @@ An Owner can be created using the ‘Add Owner’ button on the ‘Find Owners�
 
 Task 5: Create a microservice
 
-This task is still in progress
+-   Create a new 'book a vet appointment' service. This should be another page where you can book an appointment with a vet listed in our datasbase.
+-   The new service should be a seperate microservice. You cna write this in any language but extra points will be awarded if written in python.
+-   change the front-end to display the new microservice as an additional link as part of the menu in the page header. The header should now have the following items
+
+-	Home
+-	Find Owners
+-	Pets
+-	Veterinarians
+-	Error
+-   Appointments

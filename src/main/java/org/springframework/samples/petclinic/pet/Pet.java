@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.owner;
+package org.springframework.samples.petclinic.pet;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -35,6 +35,8 @@ import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.NamedEntity;
+import org.springframework.samples.petclinic.owner.Owner;
+import org.springframework.samples.petclinic.owner.PetType;
 import org.springframework.samples.petclinic.visit.Visit;
 
 /**
@@ -51,6 +53,10 @@ public class Pet extends NamedEntity {
 	@Column(name = "birth_date")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birthDate;
+	
+	@Column(name = "name")
+	@JoinColumn(name = "name")
+	private LocalDate name;
 
 	@ManyToOne
 	@JoinColumn(name = "type_id")
@@ -83,18 +89,18 @@ public class Pet extends NamedEntity {
 		return this.owner;
 	}
 
-	protected void setOwner(Owner owner) {
+	public void setOwner(Owner owner) {
 		this.owner = owner;
 	}
 
-	protected Set<Visit> getVisitsInternal() {
+	public Set<Visit> getVisitsInternal() {
 		if (this.visits == null) {
 			this.visits = new HashSet<>();
 		}
 		return this.visits;
 	}
 
-	protected void setVisitsInternal(Collection<Visit> visits) {
+	public void setVisitsInternal(Collection<Visit> visits) {
 		this.visits = new LinkedHashSet<>(visits);
 	}
 

@@ -13,8 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.owner;
+package org.springframework.samples.petclinic.pet;
 
+import org.springframework.samples.petclinic.owner.Owner;
+import org.springframework.samples.petclinic.owner.OwnerRepository;
+import org.springframework.samples.petclinic.owner.PetType;
+import org.springframework.samples.petclinic.owner.PetValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
@@ -22,8 +26,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import ch.qos.logback.classic.Logger;
+
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Juergen Hoeller
@@ -32,10 +40,12 @@ import java.util.Collection;
  */
 @Controller
 @RequestMapping("/owners/{ownerId}")
+public
 class PetController {
 
 	private static final String VIEWS_PETS_CREATE_OR_UPDATE_FORM = "pets/createOrUpdatePetForm";
 
+	private static Logger logger;
 	private final PetRepository pets;
 
 	private final OwnerRepository owners;
@@ -63,6 +73,14 @@ class PetController {
 	@InitBinder("pet")
 	public void initPetBinder(WebDataBinder dataBinder) {
 		dataBinder.setValidator(new PetValidator());
+	}
+	
+	@GetMapping("/pets.html")
+	public String showAllPets(Map<String, Object> model) {
+		Pets pets = new Pets();
+		pets.getPetList().addAll(this.pets.findAll());
+		model.put("pets", pets);
+		return "pets/petList";
 	}
 
 	@GetMapping("/pets/new")

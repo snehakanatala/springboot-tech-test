@@ -47,6 +47,17 @@ public interface OwnerRepository extends Repository<Owner, Integer> {
 	Collection<Owner> findByLastName(@Param("lastName") String lastName);
 
 	/**
+	 * Retrieve {@link Owner}s from the data store by full name, returning all owners
+	 * whose full name matches with the given name.
+	 * @param firstName
+	 * @param lastName
+	 * @return a Collection of matching {@link Owner}s (or an empty Collection if none found)
+	 */
+	@Query("SELECT DISTINCT owner FROM Owner owner WHERE owner.firstName LIKE :firstName% AND owner.lastName LIKE :lastName%")
+	@Transactional(readOnly = true)
+	Collection<Owner> findByFullName(@Param("firstName") String firstName, @Param("lastName") String lastName);
+	
+	/**
 	 * Retrieve an {@link Owner} from the data store by id.
 	 * @param id the id to search for
 	 * @return the {@link Owner} if found

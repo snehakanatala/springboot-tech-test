@@ -61,7 +61,6 @@ public interface PetRepository extends Repository<Pet, Integer> {
 	 * @throws DataAccessException
 	 */
 	@Transactional(readOnly = true)
-	@Cacheable("pets")
 	Collection<Pet> findAll() throws DataAccessException;
 	
 	/**

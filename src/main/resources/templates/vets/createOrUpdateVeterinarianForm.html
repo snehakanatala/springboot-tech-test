@@ -1,0 +1,28 @@
+<html xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
+
+<body>
+
+  <h2>Veterinarian</h2>
+  <form th:object="${vet}" class="form-horizontal" id="add-vet-form" method="post">
+    <div class="form-group has-feedback">
+      <input
+        th:replace="~{fragments/inputField :: input ('First Name', 'firstName', 'text')}" />
+      <input
+        th:replace="~{fragments/inputField :: input ('Last Name', 'lastName', 'text')}" />  
+      <!-- should add specialties into specialty object. probably here or in a separate div block -->
+      <input
+        th:replace="~{fragments/inputField :: input ('Specialty', 'specialties', 'text')}" />      
+    </div>
+    <br>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button
+          th:with="text=${vet['new']} ? 'Add Veterinarian' : 'Update Veterinarian'"
+          class="btn btn-default" type="submit" th:text="${text}">Add
+          Veterinarian</button>
+      </div>
+    </div>
+  </form>
+</body>
+</html>

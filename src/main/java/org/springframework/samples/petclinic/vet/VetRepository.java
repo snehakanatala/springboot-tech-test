@@ -17,9 +17,10 @@ package org.springframework.samples.petclinic.vet;
 
 import java.util.Collection;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -40,7 +41,20 @@ public interface VetRepository extends Repository<Vet, Integer> {
 	 * @return a <code>Collection</code> of <code>Vet</code>s
 	 */
 	@Transactional(readOnly = true)
-	@Cacheable("vets")
 	Collection<Vet> findAll() throws DataAccessException;
+	
+	/**
+	 * Save an {@link Veterinarian} to the data store, either inserting or updating it.
+	 * @param vet the {@link Vet} to save
+	 */
+	void save(Vet vet);
 
+	/**
+	 * Retrieve an {@link Vet} from the data store by id.
+	 * @param id the id to search for
+	 * @return the {@link Vet} if found
+	 */	
+	@Query("SELECT vet FROM Vet vet WHERE vet.id =:id")
+	@Transactional(readOnly = true)
+	Vet findById(@Param("id") Integer id);
 }

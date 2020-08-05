@@ -43,7 +43,6 @@ public interface VetRepository extends Repository<Vet, Integer> {
 	 * @return a <code>Collection</code> of <code>Vet</code>s
 	 */
 	@Transactional(readOnly = true)
-	@Cacheable("vets")
 	Collection<Vet> findAll() throws DataAccessException;
 	
 	/**
@@ -56,8 +55,7 @@ public interface VetRepository extends Repository<Vet, Integer> {
 	 * Retrieve an {@link Vet} from the data store by id.
 	 * @param id the id to search for
 	 * @return the {@link Vet} if found
-	 */
-	
+	 */	
 	@Query("SELECT vet FROM Vet vet WHERE vet.id =:id")
 	@Transactional(readOnly = true)
 	Vet findById(@Param("id") Integer id);

@@ -15,14 +15,14 @@
  */
 package org.springframework.samples.petclinic.vet;
 
-import org.springframework.samples.petclinic.owner.Owner;
-import org.springframework.samples.petclinic.pet.Pet;
+import org.springframework.samples.petclinic.vet.VetRepository;
+import org.springframework.samples.petclinic.vet.Vets;
+import org.springframework.samples.petclinic.vet.Vet;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
@@ -56,19 +56,13 @@ class VetController {
 		return "vets/vetList";
 	}
 
-	@GetMapping({ "/vets" })
-	public @ResponseBody Vets showResourcesVetList() {
-		// Here we are returning an object of type 'Vets' rather than a collection of Vet
-		// objects so it is simpler for JSon/Object mapping
-		Vets vets = new Vets();
-		vets.getVetList().addAll(this.vets.findAll());
-		return vets;
-	}
-
 	@GetMapping("/vets/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Vet vet = new Vet();
 		model.put("vet",  vet);
+		/* Need something like below to send object model of specialty to the form */
+		/* Specialty specialty = new Specialty();
+		model.put("specialty", specialty); */
 		return VIEWS_VET_CREATE_OR_UPDATE_FORM;
 	}
 

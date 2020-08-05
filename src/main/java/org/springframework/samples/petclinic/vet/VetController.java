@@ -23,6 +23,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
@@ -46,6 +47,15 @@ class VetController {
 		this.vets = clinicService;
 	}
 
+	@GetMapping({ "/vets" })
+	public @ResponseBody Vets showResourcesVetList() {
+		// Here we are returning an object of type 'Vets' rather than a collection of Vet
+		// objects so it is simpler for JSon/Object mapping
+		Vets vets = new Vets();
+		vets.getVetList().addAll(this.vets.findAll());
+		return vets;
+	}
+	
 	@GetMapping("/vets.html")
 	public String showVetList(Map<String, Object> model) {
 		// Here we are returning an object of type 'Vets' rather than a collection of Vet
@@ -60,9 +70,14 @@ class VetController {
 	public String initCreationForm(Map<String, Object> model) {
 		Vet vet = new Vet();
 		model.put("vet",  vet);
-		/* Need something like below to send object model of specialty to the form */
-		/* Specialty specialty = new Specialty();
-		model.put("specialty", specialty); */
+		
+		/* Need something like  
+		
+		      Specialty specialty = new Specialty();
+		      model.put("specialty", specialty); 
+        
+        to send object model of type 'Specialty' to the form */
+		
 		return VIEWS_VET_CREATE_OR_UPDATE_FORM;
 	}
 
@@ -78,7 +93,7 @@ class VetController {
 	}
 	
 	@GetMapping("/vets/{vetId}")
-	public ModelAndView showOwner(@PathVariable("vetId") int vetId) {
+	public ModelAndView showVet(@PathVariable("vetId") int vetId) {
 		ModelAndView mav = new ModelAndView("vets/vetDetails");
 		Vet vet = this.vets.findById(vetId);
 		mav.addObject(vet);

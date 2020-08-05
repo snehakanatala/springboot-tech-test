@@ -24,12 +24,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import ch.qos.logback.classic.Logger;
-
 import javax.validation.Valid;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author Juergen Hoeller

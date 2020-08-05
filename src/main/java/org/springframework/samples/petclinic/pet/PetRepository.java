@@ -18,12 +18,10 @@ package org.springframework.samples.petclinic.pet;
 import java.util.Collection;
 import java.util.List;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.samples.petclinic.owner.PetType;
-import org.springframework.samples.petclinic.vet.Vet;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

@@ -6,8 +6,6 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.springframework.samples.petclinic.vet.Vet;
-
 /**
  * Simple domain object representing a list of registered pets
  * 

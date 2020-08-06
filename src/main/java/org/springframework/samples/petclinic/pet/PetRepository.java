@@ -13,12 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.owner;
+package org.springframework.samples.petclinic.pet;
 
+import java.util.Collection;
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
+import org.springframework.samples.petclinic.owner.PetType;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -49,7 +52,15 @@ public interface PetRepository extends Repository<Pet, Integer> {
 	 */
 	@Transactional(readOnly = true)
 	Pet findById(Integer id);
-
+	
+	/**
+	 * Retrieve all <code>Pet</code>s from the data store.
+	 * @return a <code>Collection</code> of <code>Pet</code>s
+	 * @throws DataAccessException
+	 */
+	@Transactional(readOnly = true)
+	Collection<Pet> findAll() throws DataAccessException;
+	
 	/**
 	 * Save a {@link Pet} to the data store, either inserting or updating it.
 	 * @param pet the {@link Pet} to save

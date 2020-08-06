@@ -31,16 +31,18 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.samples.petclinic.pet.Pet;
+import org.springframework.samples.petclinic.pet.PetRepository;
 import org.springframework.test.web.servlet.MockMvc;
 
 /**
- * Test class for the {@link PetController}
+ * Test class for the {@link OwnerPetController}
  *
  * @author Colin But
  */
-@WebMvcTest(value = PetController.class,
+@WebMvcTest(value = OwnerPetController.class,
 		includeFilters = @ComponentScan.Filter(value = PetTypeFormatter.class, type = FilterType.ASSIGNABLE_TYPE))
-class PetControllerTests {
+class OwnerPetControllerTests {
 
 	private static final int TEST_OWNER_ID = 1;
 

@@ -32,11 +32,11 @@ public class Appointments {
 		app1 = new Appointment();
 		app2 = new Appointment();
 		app1.setApptDate(LocalDate.now());
-		app1.setPetId("1");
-		app1.setVetId("1");
+		app1.setPetId(1);
+		app1.setVetId(1);
 		app2.setApptDate(LocalDate.now());
-		app2.setPetId("2");
-		app2.setVetId("2");
+		app2.setPetId(2);
+		app2.setVetId(2);
 		apps.add(app1);
 		apps.add(app2);
 		return apps;

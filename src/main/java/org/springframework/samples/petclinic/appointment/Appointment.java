@@ -10,36 +10,27 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Embeddable
-@Table(name="appointments")
 public class Appointment {
 
-	@Column(name = "pet_id")
-	@NotEmpty
-	private String petId;
+	private int petId;
 
-	@Column(name = "vet_id")
-	@NotEmpty
-	private String vetId;
+	private int vetId;
 
-	@Column(name = "app_date")
-	@NotEmpty
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate apptDate;
 	
-	public String getPetId() {
+	public int getPetId() {
 		return petId;
 	}
 
-	public void setPetId(String petId) {
+	public void setPetId(int petId) {
 		this.petId = petId;
 	}
 
-	public String getVetId() {
+	public int getVetId() {
 		return vetId;
 	}
 
-	public void setVetId(String vetId) {
+	public void setVetId(int vetId) {
 		this.vetId = vetId;
 	}
 

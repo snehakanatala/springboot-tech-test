@@ -12,12 +12,14 @@
       <tr>
         <th>Pet ID</th>
         <th>Veterinarian ID</th>
+        <th>Appointment Date</th>
       </tr>
     </thead>
     <tbody>
       <tr th:each="appt : ${appointments.appointmentList}">
         <td th:text="${appt.petId}"></td>
         <td th:text="${appt.vetId}"></td>
+        <td th:text="${appt.apptDate}"></td>
       </tr>
     </tbody>
   </table>

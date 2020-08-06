@@ -3,13 +3,14 @@ package org.springframework.samples.petclinic.appointment;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
+@Embeddable
 @Table(name="appointments")
 public class Appointment {
 

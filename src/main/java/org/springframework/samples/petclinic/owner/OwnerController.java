@@ -64,6 +64,11 @@ class OwnerController {
 
 	@PostMapping("/owners/new")
 	public String processCreationForm(@Valid Owner owner, BindingResult result) {
+		Collection<Owner> ownersWithSameName = this.owners.findByFullName(owner.getFirstName(), owner.getLastName());
+		if(!ownersWithSameName.isEmpty()) {
+			throw new RuntimeException(
+					"Duplicate entry, this owner already exists. Please use our ‘Find owner’ option to find this owner.");
+		}
 		if (result.hasErrors()) {
 			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
 		}
